@@ -5,7 +5,7 @@ import (
 )
 
 func TestEmptySize(t *testing.T) {
-	s := New()
+	s := New[string]()
 
 	if s.Size() != 0 {
 		t.FailNow()
@@ -14,23 +14,23 @@ func TestEmptySize(t *testing.T) {
 }
 
 func TestEmptyPop(t *testing.T) {
-	s := New()
+	s := New[string]()
 
-	if s.Pop() != nil {
+	if s.Pop() != "" {
 		t.FailNow()
 	}
 }
 
 func TestEmptyPeek(t *testing.T) {
-	s := New()
+	s := New[string]()
 
-	if s.Peek() != nil {
+	if s.Peek() != "" {
 		t.FailNow()
 	}
 }
 
 func TestEmptyIsEmpty(t *testing.T) {
-	s := New()
+	s := New[int]()
 
 	if !s.IsEmpty() {
 		t.FailNow()
@@ -38,7 +38,7 @@ func TestEmptyIsEmpty(t *testing.T) {
 }
 
 func TestOneSize(t *testing.T) {
-	s := New()
+	s := New[int]()
 	s.Push(1)
 
 	if s.Size() != 1 {
@@ -47,7 +47,7 @@ func TestOneSize(t *testing.T) {
 }
 
 func TestOnePop(t *testing.T) {
-	s := New()
+	s := New[int]()
 	s.Push(1)
 
 	if s.Pop() != 1 {
@@ -60,7 +60,7 @@ func TestOnePop(t *testing.T) {
 }
 
 func TestOnePeek(t *testing.T) {
-	s := New()
+	s := New[int]()
 	s.Push(1)
 
 	if s.Peek() != 1 {
@@ -73,7 +73,7 @@ func TestOnePeek(t *testing.T) {
 }
 
 func TestOneIsEmpty(t *testing.T) {
-	s := New()
+	s := New[int]()
 	s.Push(1)
 
 	if s.IsEmpty() {
@@ -82,9 +82,9 @@ func TestOneIsEmpty(t *testing.T) {
 }
 
 func TestMultipleOperations(t *testing.T) {
-	s := New()
-	s.Push(1)
-	s.Push(2)
+	s := New[string]()
+	s.Push("1")
+	s.Push("2")
 	s.Push("fred")
 
 	a := s.Pop()
@@ -102,13 +102,11 @@ func TestMultipleOperations(t *testing.T) {
 	if s.Peek() != "barney" {
 		t.FailNow()
 	}
-	s.Push([]byte{1, 2, 3})
-	_ = s.Pop()
 	if s.Pop() != "barney" {
 		t.FailNow()
 	}
 
-	if s.Pop() != 2 {
+	if s.Pop() != "2" {
 		t.FailNow()
 	}
 
@@ -116,11 +114,11 @@ func TestMultipleOperations(t *testing.T) {
 		t.FailNow()
 	}
 
-	if s.Pop() != 1 {
+	if s.Pop() != "1" {
 		t.FailNow()
 	}
 
-	if s.Pop() != nil {
+	if s.Pop() != "" {
 		t.FailNow()
 	}
 
