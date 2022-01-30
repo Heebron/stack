@@ -12,8 +12,6 @@ type Stack[T comparable] struct {
 	data []T
 }
 
-//type Stack []interface{}
-
 // New create an empty stack of type T.
 func New[T comparable]() *Stack[T] {
 	return &Stack[T]{}

@@ -105,23 +105,18 @@ func TestMultipleOperations(t *testing.T) {
 	if s.Pop() != "barney" {
 		t.FailNow()
 	}
-
 	if s.Pop() != "2" {
 		t.FailNow()
 	}
-
 	if s.IsEmpty() {
 		t.FailNow()
 	}
-
 	if s.Pop() != "1" {
 		t.FailNow()
 	}
-
 	if s.Pop() != "" {
 		t.FailNow()
 	}
-
 	if !s.IsEmpty() {
 		t.FailNow()
 	}
@@ -151,5 +146,4 @@ func TestMultipleOperations(t *testing.T) {
 	if s.Size() != 1 {
 		t.FailNow()
 	}
-
 }
