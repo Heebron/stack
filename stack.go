@@ -17,21 +17,21 @@ func New[T comparable]() *Stack[T] {
 	return &Stack[T]{}
 }
 
-// Push an item onto the stack.
+// Push an item onto this.
 func (s *Stack[T]) Push(item T) {
 	s.lock.Lock()
 	s.data = append(s.data, item)
 	s.lock.Unlock()
 }
 
-// Clear a stack of all items.
+// Clear this of all items.
 func (s *Stack[T]) Clear() {
 	s.lock.Lock()
 	s.data = s.data[:0] // keep allocated memory - don't pound the GC!
 	s.lock.Unlock()
 }
 
-// Peek return the top item without popping it off the stack. Return nil if the stack is empty.
+// Peek return the top item without popping it off. Return nil if this is empty.
 func (s *Stack[T]) Peek() (item T) {
 	s.lock.RLock()
 	if len(s.data) > 0 {
@@ -41,7 +41,7 @@ func (s *Stack[T]) Peek() (item T) {
 	return
 }
 
-// Pop the top item off the stack. Return nil if the stack is empty.
+// Pop the top item off. Return nil if this is empty.
 func (s *Stack[T]) Pop() (item T) {
 	s.lock.RLock()
 	if len(s.data) > 0 {
@@ -52,14 +52,14 @@ func (s *Stack[T]) Pop() (item T) {
 	return
 }
 
-// Size returns the number of items on the stack.
+// Size returns the number of items in this.
 func (s *Stack[T]) Size() int {
 	s.lock.RLock()
 	defer s.lock.RUnlock()
 	return len(s.data)
 }
 
-// IsEmpty returns true iff stack is empty.
+// IsEmpty returns true if this is empty.
 func (s *Stack[T]) IsEmpty() bool {
 	s.lock.RLock()
 	defer s.lock.RUnlock()
