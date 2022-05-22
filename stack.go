@@ -7,13 +7,13 @@ package stack
 
 import "sync"
 
-type Stack[T comparable] struct {
+type Stack[T any] struct {
 	lock sync.RWMutex
 	data []T
 }
 
 // New create an empty stack of type T.
-func New[T comparable]() *Stack[T] {
+func New[T any]() *Stack[T] {
 	return &Stack[T]{}
 }
 
