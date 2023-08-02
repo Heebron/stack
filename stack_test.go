@@ -1,3 +1,4 @@
+// Document me
 package stack
 
 import (
