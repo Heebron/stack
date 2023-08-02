@@ -4,6 +4,14 @@ import (
 	"testing"
 )
 
+func TestUnsafe(t *testing.T) {
+	s := NewUnsafe[string]()
+
+	if s.Size() != 0 {
+		t.FailNow()
+	}
+}
+
 func TestEmptySize(t *testing.T) {
 	s := New[string]()
 
