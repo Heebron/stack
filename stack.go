@@ -13,12 +13,12 @@ type Stack[T any] struct {
 	data   []T
 }
 
-// New create an empty stack of type T.
+// New creates an empty stack of type T.
 func New[T any]() *Stack[T] {
 	return &Stack[T]{unsafe: false}
 }
 
-// NewUnsafe create an empty stack of type T that is not thread safe.
+// NewUnsafe creates an empty stack of type T that is not thread safe.
 func NewUnsafe[T any]() *Stack[T] {
 	return &Stack[T]{unsafe: true}
 }
